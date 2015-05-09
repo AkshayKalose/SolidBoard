@@ -3,60 +3,101 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Laravel</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<title>@yield('title') | SolidBoard</title>
 
-	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
-
-	<!-- Fonts -->
-	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
-
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css"  media="screen,projection"/>
+	<style type="text/css">
+		body {
+			display: flex;
+			min-height: 100vh;
+			flex-direction: column;
+		}
+		
+		main {
+			flex: 1 0 auto;
+		}
+	</style>
 </head>
-<body>
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle Navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Laravel</a>
-			</div>
-
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li><a href="{{ url('/') }}">Home</a></li>
-				</ul>
-
-				<ul class="nav navbar-nav navbar-right">
-					@if (Auth::guest())
-						<li><a href="{{ url('/auth/login') }}">Login</a></li>
-						<li><a href="{{ url('/auth/register') }}">Register</a></li>
-					@else
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
-							</ul>
-						</li>
-					@endif
-				</ul>
-			</div>
+	<body>
+		<nav class="light-blue lighten-1" role="navigation">
+		<div class="nav-wrapper container"><a id="logo-container" href="{{ URL::action('HomeController@index') }}" class="brand-logo">SolidBoard</a>
+			<ul class="right hide-on-med-and-down">
+				@if(Auth::check())
+					<li><a href="{{ URL::action('TaskController@index') }}">My Tasks</a></li>
+				@else
+					<li><a href="{{ URL::action('HomeController@index') }}">Login</a></li>
+				@endif
+			</ul>
+			
+			<ul id="nav-mobile" class="side-nav">
+				@if(Auth::check())
+					<li><a href="{{ URL::action('TaskController@index') }}">My Tasks</a></li>
+				@else
+					<li><a href="{{ URL::action('HomeController@index') }}">Login</a></li>
+				@endif
+			</ul>
+			<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
 		</div>
-	</nav>
-
-	@yield('content')
-
-	<!-- Scripts -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-</body>
+		</nav>
+		<br>
+		<div class="container">
+			@if (count($errors) > 0)
+				<div class="row">
+					<div class="col s12">
+						<ul class="collection">
+							@foreach ($errors->all() as $error)
+								<li class="collection-item red"><i class="mdi-alert-error"></i> {{ $error }} </li>
+							@endforeach
+						</ul>
+					</div>
+				</div>
+			@endif
+			<br>
+		</div>
+		@yield('content')
+		
+		<footer class="page-footer orange">
+			<div class="container">
+			  <div class="row">
+				<div class="col l6 s12">
+				  <h5 class="white-text">SolidBoard</h5>
+				  <p class="grey-text text-lighten-4">SolidBoard was made to provide students and faculty the best experience in enhancing the online experience in Education.</p>
+		
+		
+				</div>
+				<div class="col l3 s12 right">
+				  <h5 class="white-text">Settings</h5>
+				  <ul>
+				  	@if(Auth::check())
+						<li><a class="white-text" href="{{ url('/auth/logout') }}">Logout</a></li>
+					@else
+						<li><a class="white-text" href="{{ URL::to('/', array(), true) }}">Home</a></li>
+					@endif
+				  </ul>
+				</div>
+			  </div>
+			</div>
+			<div class="footer-copyright">
+			  <div class="container">
+			  Made by <a class="orange-text text-lighten-3" href="http://www.kalose.net">Akshay Kalose</a>
+			  </div>
+			</div>
+		  </footer>
+		<!-- Scripts -->
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
+		<script type="text/javascript">
+			(function($){
+			  $(function(){
+			
+				$('.button-collapse').sideNav();
+			
+			  }); // end of document ready
+			})(jQuery); // end of jQuery name space
+			
+			@yield('morejs')
+			
+		</script>
+	</body>
 </html>

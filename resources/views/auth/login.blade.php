@@ -1,61 +1,39 @@
 @extends('app')
 
+@section('title', 'Login')
+
 @section('content')
-<div class="container-fluid">
+<div class="container">
+
 	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default">
-				<div class="panel-heading">Login</div>
-				<div class="panel-body">
-					@if (count($errors) > 0)
-						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
-							<ul>
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ul>
-						</div>
-					@endif
-
-					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
-							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label class="col-md-4 control-label">Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password">
-							</div>
-						</div>
-
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<div class="checkbox">
-									<label>
-										<input type="checkbox" name="remember"> Remember Me
-									</label>
-								</div>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">Login</button>
-
-								<a class="btn btn-link" href="{{ url('/password/email') }}">Forgot Your Password?</a>
-							</div>
-						</div>
-					</form>
+		<form class="col s12" role="form" method="POST" action="{{ url('/auth/login') }}">
+			<input type="hidden" name="_token" value="{{ csrf_token() }}">
+			<div class="row">
+				<div class="input-field col s6">
+					<i class="mdi-communication-email prefix"></i>
+					<input id="email" name="email" type="email" class="validate" value="{{ old('email') }}">
+					<label for="email">Email</label>
 				</div>
 			</div>
-		</div>
+			<div class="row">
+			 	<div class="input-field col s6">
+			 		<i class="mdi-communication-vpn-key prefix"></i>
+					<input id="password" name="password" type="password" class="validate">
+					<label for="password">Password</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s6">
+					<input type="checkbox" class="filled-in" id="filled-in-box" name="remember" checked="checked" />
+					<label for="filled-in-box">Remember Me</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s6">
+					<button type="submit" class="waves-effect waves-light btn">Login</button>
+				</div>
+			</div>
+		</form>
 	</div>
 </div>
 @endsection
