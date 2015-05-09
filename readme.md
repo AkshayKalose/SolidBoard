@@ -1,23 +1,20 @@
-## Laravel PHP Framework
+# SolidBoard
+---
+Created by Akshay Kalose during the first 24-hour hackathon, CatHacks, at the University of Kentucky.
+[Project on ChallengePost](http://challengepost.com/software/solidboard)
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/downloads.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+Screenshots
+==
+###Homepage
+![Homepage](https://firefly-challengepost.netdna-ssl.com/usercontent/fill/333/222/cGhvdG9zL3Byb2R1Y3Rpb24vc29mdHdhcmVfdGh1bWJuYWlsX3Bob3Rvcy8wMDAvMjQ0Lzk4MC9kYXRhcy9vcmlnaW5hbC5wbmc=/Welcome.png?signature=f1fde02bb906fbc55a056441ec929acb7131f897)
+###Login
+![Login](http://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/000/245/067/datas/gallery.jpg)
+###New Task
+![New Task](http://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/000/245/069/datas/gallery.jpg)
+###Task List
+![Task List](http://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/000/245/070/datas/gallery.jpg)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
-
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
-
-## Official Documentation
-
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
-
-### License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+Open Source Software Used
+==
+- [Laravel 5](http://laravel.com/)
+- [MaterializeCSS](http://materializecss.com/)
